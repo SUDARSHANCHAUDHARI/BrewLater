@@ -1,0 +1,11 @@
+{
+  "name": "brewlater",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A stubborn, asset-free virtual coffee machine built with HTML, CSS, SVG, and vanilla JavaScript.",
+  "scripts": {
+    "check": "node --check script.js && node --test",
+    "test": "node --test"
+  },
+  "license": "UNLICENSED"
+}

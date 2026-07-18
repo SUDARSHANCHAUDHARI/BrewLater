@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'none'; connect-src 'none'; font-src 'self'; form-action 'none'; frame-src 'none'; img-src 'self' data:; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'"
+    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <meta
+      name="description"
+      content="BrewLater is a stubborn virtual coffee machine that always has one more excuse."
+    >
+    <meta name="theme-color" content="#d7edf0">
+    <title>BrewLater — Coffee, eventually.</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#controls">Skip to coffee controls</a>
+
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Countertop automation · Unit BL–10</p>
+        <h1>Brew<span>Later</span></h1>
+      </div>
+      <p class="intro">
+        A fully automated coffee machine.<br>
+        The automation is mostly avoidance.
+      </p>
+    </header>
+
+    <main class="coffee-lab">
+      <section class="machine-stage" aria-labelledby="machine-heading">
+        <div class="stage-heading">
+          <div>
+            <p class="section-label">The appliance</p>
+            <h2 id="machine-heading">Management says it works</h2>
+          </div>
+          <p class="mood-badge" id="machineMood">Mood: unavailable</p>
+        </div>
+
+        <div class="machine-wrap" id="machineWrap">
+          <svg
+            class="machine"
+            viewBox="0 0 650 620"
+            role="img"
+            aria-labelledby="machineTitle machineDescription"
+          >
+            <title id="machineTitle">A cartoon yellow coffee machine with an empty cup</title>
+            <desc id="machineDescription">
+              The machine has a water tank, blinking lights, a motivation gauge, a coffee spout,
+              and a cup that fills only after ten attempts.
+            </desc>
+
+            <defs>
+              <clipPath id="cupClip">
+                <path d="M265 442h112l-12 108c-1 12-12 21-24 21h-40c-12 0-23-9-24-21z"></path>
+              </clipPath>
+              <pattern id="tankBubbles" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="7" cy="8" r="3" fill="#fff8df" opacity="0.55"></circle>
+                <circle cx="19" cy="19" r="2" fill="#fff8df" opacity="0.35"></circle>
+              </pattern>
+            </defs>
+
+            <ellipse class="counter-shadow" cx="323" cy="574" rx="248" ry="26"></ellipse>
+
+            <g class="machine-shell">
+              <path
+                class="machine-body-shadow"
+                d="M169 88h337c29 0 52 23 52 52v366H117V140c0-29 23-52 52-52z"
+              ></path>
+              <path
+                class="machine-body"
+                d="M151 70h337c29 0 52 23 52 52v366H99V122c0-29 23-52 52-52z"
+              ></path>
+              <path class="machine-top" d="M151 70h337c29 0 52 23 52 52v30H99v-30c0-29 23-52 52-52z"></path>
+
+              <g class="vent" aria-hidden="true">
+                <path d="M155 107h36"></path>
+                <path d="M205 107h36"></path>
+                <path d="M255 107h36"></path>
+              </g>
+
+              <g class="water-tank">
+                <rect class="tank-frame" x="54" y="166" width="112" height="256" rx="24"></rect>
+                <rect class="tank-glass" x="70" y="184" width="80" height="220" rx="13"></rect>
+                <rect class="tank-water" x="70" y="230" width="80" height="174" rx="0"></rect>
+                <rect class="tank-bubbles" x="70" y="230" width="80" height="174"></rect>
+                <path class="tank-line" d="M81 254c14-9 26 9 40 0s20 6 29 1"></path>
+                <text class="svg-label" x="110" y="212" text-anchor="middle">WATER</text>
+              </g>
+
+              <g class="face-screen">
+                <rect class="screen-bezel" x="202" y="174" width="240" height="100" rx="20"></rect>
+                <rect class="screen-glass" x="216" y="188" width="212" height="72" rx="11"></rect>
+                <g class="machine-eyes" aria-hidden="true">
+                  <path d="M259 226h36"></path>
+                  <path d="M350 226h36"></path>
+                  <path class="machine-mouth" d="M300 245h44"></path>
+                </g>
+              </g>
+
+              <g class="status-lights" aria-hidden="true">
+                <circle class="status-light status-light--red" cx="474" cy="203" r="13"></circle>
+                <circle class="status-light status-light--green" cx="474" cy="244" r="13"></circle>
+              </g>
+
+              <g class="motivation-gauge" aria-hidden="true">
+                <path class="gauge-face" d="M181 330a64 64 0 0 1 128 0z"></path>
+                <path class="gauge-track" d="M197 328a48 48 0 0 1 96 0"></path>
+                <path class="gauge-needle" d="M245 327l-31-31"></path>
+                <circle class="gauge-pin" cx="245" cy="327" r="7"></circle>
+                <text class="gauge-title" x="245" y="288" text-anchor="middle">MOTIVATION</text>
+                <text class="gauge-min" x="190" y="351">NO</text>
+                <text class="gauge-max" x="287" y="351">EH</text>
+              </g>
+
+              <g class="brew-head">
+                <path class="brew-neck" d="M349 308h101v55H349z"></path>
+                <rect class="brew-head-body" x="327" y="345" width="146" height="55" rx="16"></rect>
+                <path class="spout" d="M381 397v34h39v-34"></path>
+              </g>
+
+              <g class="side-lever" aria-hidden="true">
+                <path d="M540 235h44v20h-44z"></path>
+                <path class="lever-arm" d="M579 244v104"></path>
+                <circle class="lever-knob" cx="579" cy="363" r="24"></circle>
+              </g>
+
+              <rect class="machine-foot" x="121" y="488" width="55" height="31" rx="8"></rect>
+              <rect class="machine-foot" x="463" y="488" width="55" height="31" rx="8"></rect>
+              <path class="drip-tray" d="M231 465h243l-16 34H247z"></path>
+              <g class="tray-lines" aria-hidden="true">
+                <path d="M266 478h172"></path>
+                <path d="M285 489h134"></path>
+              </g>
+            </g>
+
+            <g class="steam-cloud" aria-hidden="true">
+              <path class="steam steam--one" d="M303 449c-18-27 20-30 3-58-14-23 9-35 7-50"></path>
+              <path class="steam steam--two" d="M340 443c17-24-18-34-2-57 13-19-4-33 3-47"></path>
+              <path class="steam steam--three" d="M374 449c-12-23 17-32 2-53-11-17 7-31 3-45"></path>
+            </g>
+
+            <circle class="coffee-drop" cx="400" cy="423" r="7" aria-hidden="true"></circle>
+
+            <g class="cup">
+              <path class="cup-handle" d="M367 467h27c43 0 44 65 3 70h-31"></path>
+              <rect
+                class="coffee-fill"
+                x="264"
+                y="442"
+                width="114"
+                height="130"
+                clip-path="url(#cupClip)"
+              ></rect>
+              <path
+                class="cup-body"
+                d="M265 442h112l-12 108c-1 12-12 21-24 21h-40c-12 0-23-9-24-21z"
+              ></path>
+              <path class="cup-rim" d="M260 442h122"></path>
+              <circle class="coffee-speck" cx="321" cy="551" r="5"></circle>
+              <text class="cup-copy" x="321" y="507" text-anchor="middle">LATER</text>
+            </g>
+          </svg>
+
+          <p class="machine-caption">Premium procrastination, now with a water tank.</p>
+        </div>
+      </section>
+
+      <aside class="control-panel" id="controls" aria-labelledby="controls-heading">
+        <div class="panel-rivets" aria-hidden="true"><span></span><span></span></div>
+        <div class="panel-title-row">
+          <div>
+            <p class="section-label">Control panel</p>
+            <h2 id="controls-heading">Coffee request desk</h2>
+          </div>
+          <span class="model-stamp">BL–10</span>
+        </div>
+
+        <div class="progress-screen">
+          <div class="screen-meta">
+            <span id="screenKicker">READY / RELUCTANT</span>
+            <span>ATTEMPT <strong id="attemptCount">0 / 10</strong></span>
+          </div>
+          <p class="status-message" id="statusMessage">Machine present. Work ethic missing.</p>
+          <div
+            class="progress-track"
+            id="progressTrack"
+            role="progressbar"
+            aria-label="Brewing progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-valuetext="Waiting to start"
+            data-progress="0"
+          >
+            <span class="progress-fill" id="progressFill"></span>
+          </div>
+          <div class="diagnostics" aria-hidden="true">
+            <span><i class="diagnostic-dot diagnostic-dot--ready"></i>WATER</span>
+            <span><i class="diagnostic-dot diagnostic-dot--ready"></i>CUP</span>
+            <span><i class="diagnostic-dot"></i>EFFORT</span>
+          </div>
+        </div>
+
+        <button class="brew-button" id="brewButton" type="button" aria-describedby="brewHint">
+          <span class="brew-button-light" aria-hidden="true"></span>
+          <span>Make Coffee</span>
+          <span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="brew-hint" id="brewHint">Ten requests should be sufficiently persuasive.</p>
+
+        <div class="secondary-controls" aria-label="Machine settings">
+          <button
+            class="utility-button"
+            id="soundButton"
+            type="button"
+            aria-pressed="true"
+            aria-label="Turn generated sounds off"
+          >
+            <span aria-hidden="true" id="soundIcon">♪</span>
+            <span id="soundLabel">Sound on</span>
+          </button>
+          <button class="utility-button" id="resetButton" type="button">
+            <span aria-hidden="true">↺</span>
+            <span>Reset machine</span>
+          </button>
+        </div>
+
+        <section class="attempt-log" aria-labelledby="log-heading">
+          <div class="log-heading-row">
+            <h3 id="log-heading">Excuse archive</h3>
+            <span id="attemptsRemaining">10 remaining</span>
+          </div>
+          <ol id="attemptLog">
+            <li class="empty-log" id="emptyLog">No excuses filed yet.</li>
+          </ol>
+        </section>
+      </aside>
+    </main>
+
+    <p class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+
+    <footer>
+      <p>BrewLater™ — eventually is our fastest setting.</p>
+      <p>No beans were hurried in the making of this website.</p>
+    </footer>
+  </body>
+</html>
