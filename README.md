@@ -176,9 +176,9 @@ BrewLater targets current versions of Chrome, Edge, Firefox, and Safari. If the 
 
 ## License
 
-Copyright © 2026 Sudarshan Chaudhari / SudarshanTechLabs. All rights reserved.
+Copyright © 2026 Sudarshan Chaudhari / SudarshanTechLabs.
 
-This private project is currently **UNLICENSED**. No permission is granted to copy, modify, distribute, sublicense, or use the source outside the repository unless the author provides explicit written permission.
+Released under the MIT License — see [LICENSE](LICENSE) for the full text.
 
 ---
 
