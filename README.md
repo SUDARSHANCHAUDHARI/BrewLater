@@ -6,7 +6,7 @@ BrewLater is a humorous, interactive coffee machine that keeps avoiding its only
 
 - **Version:** 1.0.0
 - **Runtime:** Browser-only static website
-- **Repository status:** Private until explicitly approved for public release
+- **Repository status:** Public, live on GitHub Pages at <https://sudarshanchaudhari.github.io/BrewLater/>
 
 ## Table of Contents
 
@@ -68,7 +68,7 @@ Attempts 1–9 finish with a randomly selected excuse. Attempt 5 also delivers o
 
 The website itself only needs a current browser. For the complete local workflow, use:
 
-- Git for cloning the private repository.
+- Git for cloning the repository.
 - Python 3 or another static file server for local serving.
 - Node.js 18 or newer and pnpm for repository verification.
 
@@ -76,7 +76,7 @@ There are no application dependencies to install.
 
 ### Clone
 
-GitHub authentication is required while the repository is private.
+The repository is public, so cloning requires no authentication.
 
 ```sh
 git clone https://github.com/SUDARSHANCHAUDHARI/BrewLater.git
@@ -158,7 +158,7 @@ No `pnpm install` step is required. The command validates:
 
 BrewLater can be served by any HTTPS static host. Publish the repository root as-is; there is no build command, output directory, backend, environment variable, or migration.
 
-Before public launch:
+For each release:
 
 1. Run `pnpm check`.
 2. Serve the site locally and manually verify attempts 1, 5, and 10.
@@ -166,7 +166,7 @@ Before public launch:
 4. Publish the repository root through the chosen static host.
 5. Require HTTPS and configure equivalent HTTP security headers, including a `frame-ancestors` policy.
 6. Confirm the deployed page only loads `style.css` and `script.js` from its own origin.
-7. Change repository visibility only after the owner explicitly approves public release.
+7. Confirm the repository is still public and GitHub Pages still serves the site.
 
 Rollback consists of redeploying the previous known-good commit. There is no persistent or server-side data to migrate or restore.
 
